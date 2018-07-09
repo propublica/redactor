@@ -4,10 +4,12 @@ from tqdm import tqdm
 from stanfordcorenlp import StanfordCoreNLP
 
 
+'''From https://github.com/acrosson/nlp/blob/master/information-extraction.py'''
 def remove_phone_numbers(string):
     result = re.sub(r'(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})', '<PHONE>', string)
     return result
 
+'''From https://github.com/acrosson/nlp/blob/master/information-extraction.py'''
 def remove_email_addresses(string):
 	result = re.sub(r'[\w\.-]+@[\w\.-]+', '<EMAIL>', string) 
 	return result
@@ -26,6 +28,6 @@ def remove_persons(string):
 	print('Stanford: Found %d persons' %person_count)
 	print('Took %s time.' %str(end_time - start_time))
 
-	nlp_stan.close()
+	nlp.close()
 	return data_list
 
