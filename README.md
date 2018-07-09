@@ -3,7 +3,7 @@ Tool to remove email addresses, person entities, and phone numbers
 
 ## Installation
 1. `git clone https://github.com/propublica/redactor.git && cd redactor`
-2. Make virtualenv: `conda create --name <env> --file spec-file.txt`
+2. Make virtualenv (`conda create --name <env> --file spec-file.txt`) or add to virtualenv (`conda install --file spec-file.txt`)
 3. Install python wrapper to [Stanford CoreNLP](https://github.com/stanfordnlp/CoreNLP)
   
 ### Remove phone numbers
