@@ -3,7 +3,7 @@ Simple tool to remove email addresses, person entities, and phone numbers. Code 
 
 ## Installation
 1. Make a virtualenv and activate it. Something like: `virtualenv redactor && cd redactor && . bin/activate`
-2. Clone the repo. Something like: `git clone https://github.com/propublica/redactor.git && cd redactor`
+2. Clone the repo. Something like: `git clone git@github.com:propublica/redactor.git && cd redactor`
 3. Install the requirements. Something like: `pip install -r requirements.txt`
 4. Run Stanford's CoreNLP server if you're going to use the name redactor. This is slow to start, but is fast enough if you keep it running. The fastest way is to run it in a docker container. Handily, there's a repo for it, so you can just run `docker run -p 9000:9000 nlpbox/corenlp`
 
