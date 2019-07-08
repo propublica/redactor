@@ -50,4 +50,4 @@ Examples:
 'Hello, my name is Ken Schwencke and I had trouble voting for ████'
 ```
 
-One problem with this approach is that the names are tokenized into individual strings, so "Brian Kemp" becomes "brian" and "kemp". You canot list the entire name "brian kemp", and you wouldn't want to whitelist "brian", so you get sort of incomplete redaction skipping. Still, it's useful to have the ability.
+One problem with this approach is that the names are tokenized into individual strings, so "Brian Kemp" becomes "brian" and "kemp". You cannot list the entire name "brian kemp", and you wouldn't want to whitelist "brian", so you get sort of incomplete redaction skipping. Still, it's useful to have the ability.
