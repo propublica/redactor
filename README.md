@@ -1,5 +1,5 @@
 # redactor
-Simple tool to remove email addresses, person entities, and phone numbers. Code by [@liliachang](https://github.com/liliachang), light editing by [@schwanksta](https://github.com/schwanksta).
+Simple tool to remove email addresses, person entities, and phone numbers. Code by [@liliachang](https://github.com/liliachang), light editing by [@schwanksta](https://github.com/schwanksta). This code was used during Electionland 2018 to process incoming reports of election problems. 
 
 ## Installation
 1. Make a virtualenv and activate it. Something like: `virtualenv redactor && cd redactor && . bin/activate`
