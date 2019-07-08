@@ -1,33 +1,24 @@
-import re
+# -*- coding: utf-8 -*-
 
-from tqdm import tqdm
+import re
 from stanfordcorenlp import StanfordCoreNLP
 
+nlp = StanfordCoreNLP('http://localhost', port=9000)
 
 '''From https://github.com/acrosson/nlp/blob/master/information-extraction.py'''
 def remove_phone_numbers(string):
-    result = re.sub(r'(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})', '<PHONE>', string)
+    result = re.sub(r'(\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})', lambda x: u'█'*len(x.group()), string)
     return result
 
 '''From https://github.com/acrosson/nlp/blob/master/information-extraction.py'''
 def remove_email_addresses(string):
-	result = re.sub(r'[\w\.-]+@[\w\.-]+', '<EMAIL>', string) 
+	result = re.sub(r'[\w\.-]+@[\w\.-]+', lambda x: u'█'*len(x.group()), string) 
 	return result
 
 def remove_persons(string):
-	nlp = StanfordCoreNLP('http://localhost', port=9000)
-	print('Beginning redaction using Stanford package.')
 	person_count = 0
 
 	for ent in nlp.ner(string):
-		if ent[1] == 'PERSON':
-			string = string.replace(ent[0], '<PERSON>')
-
-	end_time = datetime.datetime.now()
-	time = end_time - start_time
-	print('Stanford: Found %d persons' %person_count)
-	print('Took %s time.' %str(end_time - start_time))
-
-	nlp.close()
-	return data_list
-
+		if ent[1] == 'PERSON' and ent[0].lower() not in ('trump', 'putin', 'beto', 'o\'rourke', 'denton', 'metzger', 'kemp'):
+			string = string.replace(ent[0], u'█'*len(ent[0]))
+	return string
