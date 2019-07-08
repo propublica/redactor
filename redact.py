@@ -15,10 +15,10 @@ def remove_email_addresses(string):
 	result = re.sub(r'[\w\.-]+@[\w\.-]+', lambda x: u'█'*len(x.group()), string) 
 	return result
 
-def remove_persons(string):
+def remove_persons(string, skip_redaction=('trump', 'putin', 'beto', 'o\'rourke', 'denton', 'metzger', 'kemp')):
 	person_count = 0
 
 	for ent in nlp.ner(string):
-		if ent[1] == 'PERSON' and ent[0].lower() not in ('trump', 'putin', 'beto', 'o\'rourke', 'denton', 'metzger', 'kemp'):
+		if ent[1] == 'PERSON' and ent[0].lower() not in skip_redaction:
 			string = string.replace(ent[0], u'█'*len(ent[0]))
 	return string

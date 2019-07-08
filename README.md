@@ -35,3 +35,19 @@ w_people = "Adam is going to school today"
 no_people = remove_persons(w_people)
 print(w_email) # "████ is going to school today"
 ```
+
+`skip_redaction` can take a list of lowercase strings that, if found in a potential name match, will skip the redaction. This is useful if, for example, you are redacting names from text, but wish to keep the names of well-known people who are being referenced in the text. By default, we use a few keywords related to names of candidates and elected officials from Electionland 2018.
+
+Examples:
+
+```
+>>> redact.remove_persons('Hello, my name is Ken Schwencke and I had trouble voting for Kemp')
+'Hello, my name is ███ █████████ and I had trouble voting for Kemp'
+```
+
+```
+>>> redact.remove_persons('Hello, my name is Ken Schwencke and I had trouble voting for Kemp', skip_redaction=('ken', 'schwencke',))
+'Hello, my name is Ken Schwencke and I had trouble voting for ████'
+```
+
+One problem with this approach is that the names are tokenized into individual strings, so "Brian Kemp" becomes "brian" and "kemp". You canot list the entire name "brian kemp", and you wouldn't want to whitelist "brian", so you get sort of incomplete redaction skipping. Still, it's useful to have the ability.
