@@ -36,7 +36,7 @@ no_people = remove_persons(w_people)
 print(w_email) # "████ is going to school today"
 ```
 
-`remove_persons` can take an optional argument called `skip_redaction`. This lets you supply a list of lowercase strings that, if found in a potential name match, will skip redaction them. This is useful if, for example, you are redacting names from text, but wish to keep the names of well-known people who are being referenced in the text. By default, we use a few keywords related to names of candidates and elected officials from Electionland 2018.
+`remove_persons` can take an optional argument called `skip_redaction`. This lets you supply a list of lowercase strings that, if found in a potential name match, will skip redacting them. This is useful if, for example, you are redacting names from text, but wish to keep the names of well-known people who are being referenced in the text. By default, we use a few (very incomplete!) keywords related to names of candidates and elected officials from Electionland 2018.
 
 Examples:
 
